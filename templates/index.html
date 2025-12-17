@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Management System</title>
+<style>
+/* CSS for layout and styling */
+body{margin:0;font-family: Arial;background: linear-gradient(120deg,#667eea,#764ba2);}
+.container{display:flex;height:100vh;}
+.sidebar{width:250px;background:#1e1e2f;color:white;padding:20px;}
+.sidebar h2{text-align:center;}
+.sidebar a{display:block;color:white;padding:10px;text-decoration:none;}
+.sidebar a:hover{background:#667eea;}
+.main{flex:1;padding:30px;background:#f4f6fb;}
+.card{background:white;padding:15px;margin-bottom:20px;border-radius:10px;}
+input,button{padding:10px;margin:5px;}
+table{width:100%;border-collapse:collapse;}
+th,td{padding:10px;border-bottom:1px solid #ddd;}
+th{background:#667eea;color:white;}
+a{text-decoration:none;color:#667eea;font-weight:bold;}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div class="sidebar">
+    <h2>SMS</h2>
+    <a href="/">Dashboard</a>
+  </div>
+
+  <div class="main">
+
+    <!-- ADD STUDENT -->
+    <div class="card">
+      <h3>Add Student</h3>
+      <form action="/add" method="post">
+        <input name="name" placeholder="Name" required>
+        <input name="email" placeholder="Email" required>
+        <input name="course" placeholder="Course" required>
+        <button>Add</button>
+      </form>
+    </div>
+
+    <!-- STUDENT LIST -->
+    <div class="card">
+      <h3>Students List</h3>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Course</th>
+          <th>Action</th>
+        </tr>
+
+        {% for s in students %}
+        <tr>
+          <td>{{ s[1] }}</td>
+          <td>{{ s[2] }}</td>
+          <td>{{ s[3] }}</td>
+          <td>
+            <a href="/edit/{{ s[0] }}">Edit</a> |
+            <a href="/delete/{{ s[0] }}" onclick="return confirm('Delete student?')">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+
+      </table>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
