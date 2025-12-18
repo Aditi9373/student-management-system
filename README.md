@@ -25,12 +25,10 @@ Flask-based Student Management System with AWS RDS backend and modern UI for add
 
 ## Files Included
 student-management-system/
-├── app.py
-├── templates/
-│ ├── index.html
-│ └── edit.html
-├── README.md
-└── .gitignore
+app.py
+templates/
+index.html
+edit.html
 
 ## Usage
 1. Configure RDS endpoint in app.py
